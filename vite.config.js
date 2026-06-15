@@ -1,26 +1,36 @@
 import { defineConfig } from 'vite';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-// 用相对 base './' —— 这样：
-//   1. npm run dev  -> http://localhost:5173/ 直接能开，资源 200
-//   2. GitHub Pages 项目站 (jeekeagle.github.io/portfolio-hub/) 也能用
-//   3. 自定义域名 (jeekeagle.com) 也能用
-// 想改成绝对路径再 fork 时设 VITE_BASE=/portfolio-hub/ 即可
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// 相对 base './' —— 本地 dev 和 GitHub Pages 都能用
 const base = process.env.VITE_BASE || './';
+
+// 所有 HTML 入口 —— Vite 会为每个生成对应的 build 产物
+const pages = [
+  'index',
+  'books',
+  'blog',
+  'art',
+  'courses',
+  'tools',
+  'essays',
+  'about',
+];
 
 export default defineConfig({
   base,
   build: {
     target: 'es2020',
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     assetsInlineLimit: 4096,
+    rollupOptions: {
+      input: Object.fromEntries(
+        pages.map((p) => [p, resolve(__dirname, `${p}.html`)])
+      ),
+    },
   },
-  server: {
-    host: true,
-    port: 5173,
-    strictPort: false,
-  },
-  preview: {
-    host: true,
-    port: 4173,
-  },
+  server: { host: true, port: 5173, strictPort: false },
+  preview: { host: true, port: 4173, strictPort: false },
 });
