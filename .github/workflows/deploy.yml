@@ -23,12 +23,10 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: portfolio-hub/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install
-        working-directory: portfolio-hub
         run: npm ci || npm install
       - name: Build
-        working-directory: portfolio-hub
         env:
           VITE_BASE: /${{ github.event.repository.name }}/
         run: npm run build
@@ -37,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: portfolio-hub/dist
+          path: dist
 
   deploy:
     needs: build
