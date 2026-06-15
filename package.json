@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-hub",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "jeekeagle 个人作品集 Hub — 聚合书籍 / 博客 / 画作 / 课程 / 工具",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  }
+}
