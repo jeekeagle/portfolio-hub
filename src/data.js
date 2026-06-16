@@ -6,6 +6,8 @@
 export const profile = {
   name: 'jeekeagle',
   nameDisplay: 'jeekeagle.',
+  version: 'Apple 1.0',
+  versionDate: '2026-06-15',
   eyebrow: '个人作品集 · Personal Works',
   tagline: 'Books. Art. Tools. Courses. — 一份持续更新的创作索引。',
   signature: '写三千年旧书，做一点新东西。',

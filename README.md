@@ -77,3 +77,5 @@ portfolio-hub/
 - **节奏**：Bento 卡片大小不一，每个分类卡的宽度也不一样，避免整齐划一的死板感。
 - **动效**：进入视口错位淡入，hover 上抬 + 蓝色描边，主题切换平滑过渡。
 - **无障碍**：键盘焦点环、`prefers-reduced-motion` 关闭动画、语义化结构。
+
+version 标记在源码里 (src/data.js 的 profile.version)：当前 Apple 1.0（2026-06-15）。改 version 字段、build、push，nav 上的小徽章和 footer 就会自动更新。git tag 同步：

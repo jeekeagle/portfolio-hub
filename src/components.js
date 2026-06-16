@@ -37,6 +37,7 @@ export function renderNav() {
         <a class="nav-brand" href="./index.html" aria-label="返回首页">
           <span class="nav-brand-mark" aria-hidden="true"></span>
           <span>${escapeHtml(profile.name)}</span>
+          ${profile.version ? `<span class="nav-version" title="${escapeHtml(profile.version)} · ${escapeHtml(profile.versionDate || '')}">${escapeHtml(profile.version)}</span>` : ''}
         </a>
         <div class="nav-list">${linksHtml}</div>
         <div class="nav-actions">
@@ -113,7 +114,7 @@ export function renderFooter() {
         </div>
         <div class="footer-bottom">
           <span>© ${year} ${escapeHtml(profile.name)} · ${escapeHtml(profile.quote)}</span>
-          <span>Built in public</span>
+          <span>${escapeHtml(profile.version || '')}${profile.versionDate ? ` · ${escapeHtml(profile.versionDate)}` : ''}</span>
         </div>
       </div>
     </footer>
